@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ases del Norte</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&family=Oswald:wght@500&family=Playfair+Display:wght@700&family=Anton&family=PT+Sans&family=Lato&family=Open+Sans&family=Slabo+27px&family=Merriweather&family=Raleway&family=Source+Sans+Pro&family=Ubuntu&family=Roboto+Slab&family=PT+Serif&family=Karla&family=Work+Sans&family=Nunito&family=Barlow&family=Poppins&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -18,7 +17,6 @@
             height: 100%;
             overflow: hidden;
             font-family: Arial, sans-serif;
-            background: #000;
         }
         
         .container {
@@ -41,21 +39,15 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.7;
             z-index: -1;
-            transition: all 0.5s ease;
         }
         
         .content {
             text-align: center;
             padding: 30px;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
             margin: 30px;
-            max-width: 90%;
-            z-index: 10;
-            border: 2px solid #4ECDC4;
-            backdrop-filter: blur(10px);
         }
         
         .title {
@@ -64,13 +56,6 @@
             margin-bottom: 15px;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
             font-weight: bold;
-            font-family: 'Roboto', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .title:hover {
-            transform: scale(1.02);
         }
         
         .subtitle {
@@ -78,62 +63,6 @@
             color: white;
             margin-bottom: 30px;
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
-            font-family: 'Roboto', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .subtitle:hover {
-            transform: scale(1.02);
-        }
-        
-        .phone-container {
-            margin: 20px 0;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            width: 80%;
-            max-width: 400px;
-            z-index: 10;
-        }
-        
-        .phone-label {
-            color: white;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            display: block;
-            text-align: left;
-            font-weight: bold;
-        }
-        
-        .phone-input {
-            display: flex;
-            gap: 10px;
-        }
-        
-        #phoneNumber {
-            flex-grow: 1;
-            padding: 12px;
-            border: 2px solid #4ECDC4;
-            border-radius: 8px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-        }
-        
-        #phoneNumber::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        #setNumber {
-            background: #25D366;
-            color: white;
-            border: none;
-            padding: 0 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            min-width: 70px;
         }
         
         .whatsapp-button {
@@ -145,190 +74,26 @@
             text-decoration: none;
             font-size: 1.2rem;
             font-weight: bold;
-            margin: 20px 0;
+            margin: 10px;
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
             cursor: pointer;
-            z-index: 10;
-            font-family: 'Roboto', sans-serif;
-            border: none;
-            transition: all 0.3s ease;
         }
         
-        .whatsapp-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
-        }
-        
-        .controls {
+        .upload-button {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .control-button {
             background: white;
             color: black;
             border: none;
-            padding: 12px 18px;
+            padding: 12px 20px;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 0.9rem;
             font-weight: bold;
-            min-width: 160px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .control-button:hover {
-            background: #f0f0f0;
-            transform: translateY(-2px);
         }
         
         .file-input {
             display: none;
-        }
-        
-        .selector {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            z-index: 1000;
-            display: none;
-            min-width: 320px;
-            max-height: 85vh;
-            overflow-y: auto;
-            border: 2px solid #ddd;
-        }
-        
-        .selector-title {
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #333;
-            font-size: 1.2rem;
-            border-bottom: 2px solid #4ECDC4;
-            padding-bottom: 8px;
-        }
-        
-        .option-group {
-            margin: 15px 0;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-        
-        .option-label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-            font-weight: bold;
-            font-size: 0.95rem;
-        }
-        
-        .size-control {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 8px 0;
-        }
-        
-        .size-slider {
-            flex-grow: 1;
-        }
-        
-        .size-value {
-            width: 60px;
-            text-align: center;
-            font-weight: bold;
-            color: #333;
-        }
-        
-        .font-select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 0.9rem;
-        }
-        
-        .color-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 8px;
-            margin-top: 8px;
-        }
-        
-        .color-option {
-            width: 35px;
-            height: 35px;
-            border-radius: 8px;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.2s ease;
-        }
-        
-        .color-option:hover {
-            transform: scale(1.1);
-            border-color: #333;
-        }
-        
-        .color-option.selected {
-            border-color: #333;
-            transform: scale(1.1);
-        }
-        
-        .close-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #6c757d;
-            color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        @media (max-width: 768px) {
-            .title {
-                font-size: 2.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1.3rem;
-            }
-            
-            .content {
-                margin: 20px;
-                padding: 20px;
-            }
-            
-            .phone-container {
-                width: 90%;
-            }
-            
-            .selector {
-                right: 10px;
-                left: 10px;
-                max-width: calc(100% - 20px);
-                min-width: auto;
-            }
-            
-            .color-grid {
-                grid-template-columns: repeat(6, 1fr);
-            }
         }
     </style>
 </head>
@@ -337,357 +102,20 @@
         <div class="background-image" id="backgroundImage"></div>
         
         <div class="content">
-            <h1 class="title" id="title">ASES DEL NORTE</h1>
-            <p class="subtitle" id="subtitle">Pedime tu usuario gratis y comenza a divertirte a lo grande</p>
-            
-            <!-- CAMPO PARA INGRESAR EL NÚMERO DE CELULAR -->
-            <div class="phone-container">
-                <label class="phone-label">📱 Tu número de WhatsApp:</label>
-                <div class="phone-input">
-                    <input type="tel" id="phoneNumber" placeholder="Ej: 543413123456">
-                    <button id="setNumber">Guardar</button>
-                </div>
-            </div>
-            
-            <a href="#" class="whatsapp-button" id="whatsappButton">
+            <h1 class="title">ASES DEL NORTE</h1>
+            <p class="subtitle">Pedime tu usuario gratis y comenza a divertirte a lo grande</p>
+            <a href="https://wa.me/1234567890" class="whatsapp-button" target="_blank">
                 COMUNICATE CON ALICIA
             </a>
         </div>
         
-        <div class="controls">
-            <label for="imageUpload" class="control-button">📷 CAMBIAR IMAGEN</label>
-            <input type="file" id="imageUpload" class="file-input" accept="image/*">
-            
-            <button id="titleButton" class="control-button">✏️ EDITAR TÍTULO</button>
-            <button id="subtitleButton" class="control-button">✏️ EDITAR SUBTÍTULO</button>
-            <button id="whatsappButtonControl" class="control-button">✏️ EDITAR BOTÓN</button>
-        </div>
-        
-        <!-- Selector para Título -->
-        <div class="selector" id="titleSelector">
-            <button class="close-button" onclick="document.getElementById('titleSelector').classList.remove('show')">×</button>
-            <div class="selector-title">🎨 Editar Título "ASES DEL NORTE"</div>
-            
-            <div class="option-group">
-                <label class="option-label">Tamaño de Fuente:</label>
-                <div class="size-control">
-                    <input type="range" id="titleSize" class="size-slider" min="2" max="5" step="0.1" value="3">
-                    <span id="titleSizeValue" class="size-value">3rem</span>
-                </div>
-            </div>
-            
-            <div class="option-group">
-                <label class="option-label">Tipo de Fuente:</label>
-                <select id="titleFont" class="font-select">
-                    <option value="Roboto">Roboto</option>
-                    <option value="Montserrat">Montserrat</option>
-                    <option value="Oswald">Oswald</option>
-                    <option value="Playfair Display">Playfair Display</option>
-                    <option value="Anton">Anton</option>
-                    <option value="PT Sans">PT Sans</option>
-                    <option value="Lato">Lato</option>
-                    <option value="Open Sans">Open Sans</option>
-                    <option value="Slabo 27px">Slabo 27px</option>
-                    <option value="Merriweather">Merriweather</option>
-                    <option value="Raleway">Raleway</option>
-                    <option value="Source Sans Pro">Source Sans Pro</option>
-                    <option value="Ubuntu">Ubuntu</option>
-                    <option value="Roboto Slab">Roboto Slab</option>
-                    <option value="PT Serif">PT Serif</option>
-                    <option value="Karla">Karla</option>
-                    <option value="Work Sans">Work Sans</option>
-                    <option value="Nunito">Nunito</option>
-                    <option value="Barlow">Barlow</option>
-                    <option value="Poppins">Poppins</option>
-                </select>
-            </div>
-            
-            <div class="option-group">
-                <label class="option-label">Color del Texto:</label>
-                <div class="color-grid">
-                    <div class="color-option" style="background: #FFD700;" data-color="#FFD700"></div>
-                    <div class="color-option" style="background: #FF6B6B;" data-color="#FF6B6B"></div>
-                    <div class="color-option" style="background: #4ECDC4;" data-color="#4ECDC4"></div>
-                    <div class="color-option" style="background: #45B7D1;" data-color="#45B7D1"></div>
-                    <div class="color-option" style="background: #96CEB4;" data-color="#96CEB4"></div>
-                    <div class="color-option" style="background: #DDA0DD;" data-color="#DDA0DD"></div>
-                    <div class="color-option" style="background: #FFEAA7;" data-color="#FFEAA7"></div>
-                    <div class="color-option" style="background: #FFFFFF;" data-color="#FFFFFF"></div>
-                    <div class="color-option" style="background: #000000;" data-color="#000000"></div>
-                    <div class="color-option" style="background: #FF9800;" data-color="#FF9800"></div>
-                    <div class="color-option" style="background: #2196F3;" data-color="#2196F3"></div>
-                    <div class="color-option" style="background: #9C27B0;" data-color="#9C27B0"></div>
-                    <div class="color-option" style="background: #795548;" data-color="#795548"></div>
-                    <div class="color-option" style="background: #607D8B;" data-color="#607D8B"></div>
-                    <div class="color-option" style="background: #3F51B5;" data-color="#3F51B5"></div>
-                    <div class="color-option" style="background: #E91E63;" data-color="#E91E63"></div>
-                    <div class="color-option" style="background: #009688;" data-color="#009688"></div>
-                    <div class="color-option" style="background: #9E9E9E;" data-color="#9E9E9E"></div>
-                    <div class="color-option" style="background: #F44336;" data-color="#F44336"></div>
-                    <div class="color-option" style="background: #795548;" data-color="#795548"></div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Selector para Subtítulo -->
-        <div class="selector" id="subtitleSelector">
-            <button class="close-button" onclick="document.getElementById('subtitleSelector').classList.remove('show')">×</button>
-            <div class="selector-title">🎨 Editar Subtítulo</div>
-            
-            <div class="option-group">
-                <label class="option-label">Tamaño de Fuente:</label>
-                <div class="size-control">
-                    <input type="range" id="subtitleSize" class="size-slider" min="1" max="3" step="0.1" value="1.5">
-                    <span id="subtitleSizeValue" class="size-value">1.5rem</span>
-                </div>
-            </div>
-            
-            <div class="option-group">
-                <label class="option-label">Tipo de Fuente:</label>
-                <select id="subtitleFont" class="font-select">
-                    <option value="Roboto">Roboto</option>
-                    <option value="Montserrat">Montserrat</option>
-                    <option value="Oswald">Oswald</option>
-                    <option value="Playfair Display">Playfair Display</option>
-                    <option value="Anton">Anton</option>
-                    <option value="PT Sans">PT Sans</option>
-                    <option value="Lato">Lato</option>
-                    <option value="Open Sans">Open Sans</option>
-                    <option value="Slabo 27px">Slabo 27px</option>
-                    <option value="Merriweather">Merriweather</option>
-                    <option value="Raleway">Raleway</option>
-                    <option value="Source Sans Pro">Source Sans Pro</option>
-                    <option value="Ubuntu">Ubuntu</option>
-                    <option value="Roboto Slab">Roboto Slab</option>
-                    <option value="PT Serif">PT Serif</option>
-                    <option value="Karla">Karla</option>
-                    <option value="Work Sans">Work Sans</option>
-                    <option value="Nunito">Nunito</option>
-                    <option value="Barlow">Barlow</option>
-                    <option value="Poppins">Poppins</option>
-                </select>
-            </div>
-            
-            <div class="option-group">
-                <label class="option-label">Color del Texto:</label>
-                <div class="color-grid">
-                    <div class="color-option" style="background: #FFD700;" data-color="#FFD700"></div>
-                    <div class="color-option" style="background: #FF6B6B;" data-color="#FF6B6B"></div>
-                    <div class="color-option" style="background: #4ECDC4;" data-color="#4ECDC4"></div>
-                    <div class="color-option" style="background: #45B7D1;" data-color="#45B7D1"></div>
-                    <div class="color-option" style="background: #96CEB4;" data-color="#96CEB4"></div>
-                    <div class="color-option" style="background: #DDA0DD;" data-color="#DDA0DD"></div>
-                    <div class="color-option" style="background: #FFEAA7;" data-color="#FFEAA7"></div>
-                    <div class="color-option" style="background: #FFFFFF;" data-color="#FFFFFF"></div>
-                    <div class="color-option" style="background: #000000;" data-color="#000000"></div>
-                    <div class="color-option" style="background: #FF9800;" data-color="#FF9800"></div>
-                    <div class="color-option" style="background: #2196F3;" data-color="#2196F3"></div>
-                    <div class="color-option" style="background: #9C27B0;" data-color="#9C27B0"></div>
-                    <div class="color-option" style="background: #795548;" data-color="#795548"></div>
-                    <div class="color-option" style="background: #607D8B;" data-color="#607D8B"></div>
-                    <div class="color-option" style="background: #3F51B5;" data-color="#3F51B5"></div>
-                    <div class="color-option" style="background: #E91E63;" data-color="#E91E63"></div>
-                    <div class="color-option" style="background: #009688;" data-color="#009688"></div>
-                    <div class="color-option" style="background: #9E9E9E;" data-color="#9E9E9E"></div>
-                    <div class="color-option" style="background: #F44336;" data-color="#F44336"></div>
-                    <div class="color-option" style="background: #795548;" data-color="#795548"></div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Selector para Botón WhatsApp -->
-        <div class="selector" id="whatsappSelector">
-            <button class="close-button" onclick="document.getElementById('whatsappSelector').classList.remove('show')">×</button>
-            <div class="selector-title">🎨 Editar Botón WhatsApp</div>
-            
-            <div class="option-group">
-                <label class="option-label">Tamaño de Fuente:</label>
-                <div class="size-control">
-                    <input type="range" id="buttonSize" class="size-slider" min="1" max="2" step="0.1" value="1.2">
-                    <span id="buttonSizeValue" class="size-value">1.2rem</span>
-                </div>
-            </div>
-            
-            <div class="option-group">
-                <label class="option-label">Tipo de Fuente:</label>
-                <select id="buttonFont" class="font-select">
-                    <option value="Roboto">Roboto</option>
-                    <option value="Montserrat">Montserrat</option>
-                    <option value="Oswald">Oswald</option>
-                    <option value="Playfair Display">Playfair Display</option>
-                    <option value="Anton">Anton</option>
-                    <option value="PT Sans">PT Sans</option>
-                    <option value="Lato">Lato</option>
-                    <option value="Open Sans">Open Sans</option>
-                    <option value="Slabo 27px">Slabo 27px</option>
-                    <option value="Merriweather">Merriweather</option>
-                    <option value="Raleway">Raleway</option>
-                    <option value="Source Sans Pro">Source Sans Pro</option>
-                    <option value="Ubuntu">Ubuntu</option>
-                    <option value="Roboto Slab">Roboto Slab</option>
-                    <option value="PT Serif">PT Serif</option>
-                    <option value="Karla">Karla</option>
-                    <option value="Work Sans">Work Sans</option>
-                    <option value="Nunito">Nunito</option>
-                    <option value="Barlow">Barlow</option>
-                    <option value="Poppins">Poppins</option>
-                </select>
-            </div>
-            
-            <div class="option-group">
-                <label class="option-label">Color del Texto:</label>
-                <div class="color-grid">
-                    <div class="color-option" style="background: #FFFFFF;" data-color="#FFFFFF"></div>
-                    <div class="color-option" style="background: #000000;" data-color="#000000"></div>
-                    <div class="color-option" style="background: #FFD700;" data-color="#FFD700"></div>
-                    <div class="color-option" style="background: #FF6B6B;" data-color="#FF6B6B"></div>
-                    <div class="color-option" style="background: #4ECDC4;" data-color="#4ECDC4"></div>
-                    <div class="color-option" style="background: #45B7D1;" data-color="#45B7D1"></div>
-                    <div class="color-option" style="background: #96CEB4;" data-color="#96CEB4"></div>
-                    <div class="color-option" style="background: #DDA0DD;" data-color="#DDA0DD"></div>
-                    <div class="color-option" style="background: #FFEAA7;" data-color="#FFEAA7"></div>
-                    <div class="color-option" style="background: #FF9800;" data-color="#FF9800"></div>
-                    <div class="color-option" style="background: #2196F3;" data-color="#2196F3"></div>
-                    <div class="color-option" style="background: #9C27B0;" data-color="#9C27B0"></div>
-                    <div class="color-option" style="background: #795548;" data-color="#795548"></div>
-                    <div class="color-option" style="background: #607D8B;" data-color="#607D8B"></div>
-                    <div class="color-option" style="background: #3F51B5;" data-color="#3F51B5"></div>
-                    <div class="color-option" style="background: #E91E63;" data-color="#E91E63"></div>
-                    <div class="color-option" style="background: #009688;" data-color="#009688"></div>
-                    <div class="color-option" style="background: #9E9E9E;" data-color="#9E9E9E"></div>
-                    <div class="color-option" style="background: #F44336;" data-color="#F44336"></div>
-                    <div class="color-option" style="background: #795548;" data-color="#795548"></div>
-                </div>
-            </div>
-            
-            <div class="option-group">
-                <label class="option-label">Color de Fondo:</label>
-                <div class="color-grid">
-                    <div class="color-option" style="background: #25D366;" data-bgcolor="#25D366"></div>
-                    <div class="color-option" style="background: #128C7E;" data-bgcolor="#128C7E"></div>
-                    <div class="color-option" style="background: #FF6B6B;" data-bgcolor="#FF6B6B"></div>
-                    <div class="color-option" style="background: #4ECDC4;" data-bgcolor="#4ECDC4"></div>
-                    <div class="color-option" style="background: #45B7D1;" data-bgcolor="#45B7D1"></div>
-                    <div class="color-option" style="background: #96CEB4;" data-bgcolor="#96CEB4"></div>
-                    <div class="color-option" style="background: #DDA0DD;" data-bgcolor="#DDA0DD"></div>
-                    <div class="color-option" style="background: #FF9800;" data-bgcolor="#FF9800"></div>
-                    <div class="color-option" style="background: #000000;" data-bgcolor="#000000"></div>
-                    <div class="color-option" style="background: #FFFFFF; border: 1px solid #ddd;" data-bgcolor="#FFFFFF"></div>
-                    <div class="color-option" style="background: #795548;" data-bgcolor="#795548"></div>
-                    <div class="color-option" style="background: #607D8B;" data-bgcolor="#607D8B"></div>
-                    <div class="color-option" style="background: #3F51B5;" data-bgcolor="#3F51B5"></div>
-                    <div class="color-option" style="background: #E91E63;" data-bgcolor="#E91E63"></div>
-                    <div class="color-option" style="background: #009688;" data-bgcolor="#009688"></div>
-                    <div class="color-option" style="background: #9E9E9E;" data-bgcolor="#9E9E9E"></div>
-                    <div class="color-option" style="background: #F44336;" data-bgcolor="#F44336"></div>
-                    <div class="color-option" style="background: #2196F3;" data-bgcolor="#2196F3"></div>
-                    <div class="color-option" style="background: #9C27B0;" data-bgcolor="#9C27B0"></div>
-                    <div class="color-option" style="background: #795548;" data-bgcolor="#795548"></div>
-                </div>
-            </div>
-        </div>
+        <label for="imageUpload" class="upload-button">📷 CAMBIAR IMAGEN</label>
+        <input type="file" id="imageUpload" class="file-input" accept="image/*">
     </div>
     
     <script>
-        // Elementos del DOM
         const backgroundImage = document.getElementById('backgroundImage');
         const imageUpload = document.getElementById('imageUpload');
-        const title = document.getElementById('title');
-        const subtitle = document.getElementById('subtitle');
-        const whatsappButton = document.getElementById('whatsappButton');
-        const phoneNumberInput = document.getElementById('phoneNumber');
-        const setNumberButton = document.getElementById('setNumber');
-        
-        // Botones de control
-        const titleButton = document.getElementById('titleButton');
-        const subtitleButton = document.getElementById('subtitleButton');
-        const whatsappButtonControl = document.getElementById('whatsappButtonControl');
-        
-        // Selectores
-        const titleSelector = document.getElementById('titleSelector');
-        const subtitleSelector = document.getElementById('subtitleSelector');
-        const whatsappSelector = document.getElementById('whatsappSelector');
-        
-        // Número de WhatsApp
-        let whatsappNumber = '';
-        
-        // Cargar datos desde localStorage
-        window.addEventListener('load', function() {
-            // Cargar imagen
-            const savedImage = localStorage.getItem('backgroundImage');
-            if (savedImage) {
-                backgroundImage.style.backgroundImage = `url(${savedImage})`;
-            }
-            
-            // Cargar número de WhatsApp
-            const savedNumber = localStorage.getItem('whatsappNumber');
-            if (savedNumber) {
-                whatsappNumber = savedNumber;
-                phoneNumberInput.value = savedNumber;
-            }
-            
-            // Cargar configuración del título
-            const savedTitleSize = localStorage.getItem('titleSize');
-            if (savedTitleSize) {
-                title.style.fontSize = savedTitleSize;
-                document.getElementById('titleSize').value = parseFloat(savedTitleSize);
-                document.getElementById('titleSizeValue').textContent = savedTitleSize;
-            }
-            
-            const savedTitleFont = localStorage.getItem('titleFont');
-            if (savedTitleFont) {
-                title.style.fontFamily = savedTitleFont;
-                document.getElementById('titleFont').value = savedTitleFont;
-            }
-            
-            const savedTitleColor = localStorage.getItem('titleColor');
-            if (savedTitleColor) {
-                title.style.color = savedTitleColor;
-            }
-            
-            // Cargar configuración del subtítulo
-            const savedSubtitleSize = localStorage.getItem('subtitleSize');
-            if (savedSubtitleSize) {
-                subtitle.style.fontSize = savedSubtitleSize;
-                document.getElementById('subtitleSize').value = parseFloat(savedSubtitleSize);
-                document.getElementById('subtitleSizeValue').textContent = savedSubtitleSize;
-            }
-            
-            const savedSubtitleFont = localStorage.getItem('subtitleFont');
-            if (savedSubtitleFont) {
-                subtitle.style.fontFamily = savedSubtitleFont;
-                document.getElementById('subtitleFont').value = savedSubtitleFont;
-            }
-            
-            const savedSubtitleColor = localStorage.getItem('subtitleColor');
-            if (savedSubtitleColor) {
-                subtitle.style.color = savedSubtitleColor;
-            }
-            
-            // Cargar configuración del botón
-            const savedButtonSize = localStorage.getItem('buttonSize');
-            if (savedButtonSize) {
-                whatsappButton.style.fontSize = savedButtonSize;
-                document.getElementById('buttonSize').value = parseFloat(savedButtonSize);
-                document.getElementById('buttonSizeValue').textContent = savedButtonSize;
-            }
-            
-            const savedButtonFont = localStorage.getItem('buttonFont');
-            if (savedButtonFont) {
-                whatsappButton.style.fontFamily = savedButtonFont;
-                document.getElementById('buttonFont').value = savedButtonFont;
-            }
-            
-            const savedButtonColor = localStorage.getItem('buttonColor');
-            if (savedButtonColor) {
-                whatsappButton.style.color = savedButtonColor;
-            }
-            
-            const savedButtonBgColor = localStorage.getItem('buttonBgColor');
-            if (savedButtonBgColor) {
-                whatsappButton.style.background = savedButtonBgColor;
-            }
-        });
         
         // Cambiar imagen
         imageUpload.addEventListener('change', function(e) {
@@ -695,167 +123,16 @@
                 const reader = new FileReader();
                 reader.onload = function(event) {
                     const imageUrl = event.target.result;
-                    // Mostrar transición
-                    backgroundImage.style.opacity = '0.3';
-                    setTimeout(() => {
-                        backgroundImage.style.backgroundImage = `url(${imageUrl})`;
-                        backgroundImage.style.backgroundSize = 'cover';
-                        backgroundImage.style.backgroundPosition = 'center';
-                        backgroundImage.style.backgroundRepeat = 'no-repeat';
-                        backgroundImage.style.opacity = '0.7';
-                        localStorage.setItem('backgroundImage', imageUrl);
-                    }, 150);
+                    backgroundImage.style.backgroundImage = `url(${imageUrl})`;
                 }
                 reader.readAsDataURL(e.target.files[0]);
             }
-        });
-        
-        // Guardar número de WhatsApp
-        setNumberButton.addEventListener('click', function() {
-            const inputNumber = phoneNumberInput.value.trim();
-            if (inputNumber && /^\d{8,15}$/.test(inputNumber)) {
-                whatsappNumber = inputNumber;
-                localStorage.setItem('whatsappNumber', whatsappNumber);
-                alert('¡Número guardado correctamente! Ahora puedes contactar por WhatsApp.');
-            } else {
-                alert('Por favor ingresa un número válido de 8-15 dígitos');
-            }
-        });
-        
-        // Mostrar selectores
-        titleButton.addEventListener('click', function() {
-            titleSelector.classList.add('show');
-            subtitleSelector.classList.remove('show');
-            whatsappSelector.classList.remove('show');
-        });
-        
-        subtitleButton.addEventListener('click', function() {
-            subtitleSelector.classList.add('show');
-            titleSelector.classList.remove('show');
-            whatsappSelector.classList.remove('show');
-        });
-        
-        whatsappButtonControl.addEventListener('click', function() {
-            whatsappSelector.classList.add('show');
-            titleSelector.classList.remove('show');
-            subtitleSelector.classList.remove('show');
-        });
-        
-        // Cerrar selectores al hacer clic fuera
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.controls') && !e.target.closest('.selector')) {
-                titleSelector.classList.remove('show');
-                subtitleSelector.classList.remove('show');
-                whatsappSelector.classList.remove('show');
-            }
-        });
-        
-        // Funcionalidad para el selector de título
-        document.getElementById('titleSize').addEventListener('input', function() {
-            const size = this.value + 'rem';
-            title.style.fontSize = size;
-            document.getElementById('titleSizeValue').textContent = size;
-            localStorage.setItem('titleSize', size);
-        });
-        
-        document.getElementById('titleFont').addEventListener('change', function() {
-            title.style.fontFamily = this.value;
-            localStorage.setItem('titleFont', this.value);
-        });
-        
-        document.querySelectorAll('#titleSelector .color-option').forEach(option => {
-            option.addEventListener('click', function() {
-                const color = this.getAttribute('data-color');
-                title.style.color = color;
-                localStorage.setItem('titleColor', color);
-                
-                // Actualizar selección visual
-                document.querySelectorAll('#titleSelector .color-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                this.classList.add('selected');
-            });
-        });
-        
-        // Funcionalidad para el selector de subtítulo
-        document.getElementById('subtitleSize').addEventListener('input', function() {
-            const size = this.value + 'rem';
-            subtitle.style.fontSize = size;
-            document.getElementById('subtitleSizeValue').textContent = size;
-            localStorage.setItem('subtitleSize', size);
-        });
-        
-        document.getElementById('subtitleFont').addEventListener('change', function() {
-            subtitle.style.fontFamily = this.value;
-            localStorage.setItem('subtitleFont', this.value);
-        });
-        
-        document.querySelectorAll('#subtitleSelector .color-option').forEach(option => {
-            option.addEventListener('click', function() {
-                const color = this.getAttribute('data-color');
-                subtitle.style.color = color;
-                localStorage.setItem('subtitleColor', color);
-                
-                // Actualizar selección visual
-                document.querySelectorAll('#subtitleSelector .color-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                this.classList.add('selected');
-            });
-        });
-        
-        // Funcionalidad para el selector de botón
-        document.getElementById('buttonSize').addEventListener('input', function() {
-            const size = this.value + 'rem';
-            whatsappButton.style.fontSize = size;
-            document.getElementById('buttonSizeValue').textContent = size;
-            localStorage.setItem('buttonSize', size);
-        });
-        
-        document.getElementById('buttonFont').addEventListener('change', function() {
-            whatsappButton.style.fontFamily = this.value;
-            localStorage.setItem('buttonFont', this.value);
-        });
-        
-        document.querySelectorAll('#whatsappSelector .color-option').forEach(option => {
-            option.addEventListener('click', function() {
-                if (this.hasAttribute('data-color')) {
-                    const color = this.getAttribute('data-color');
-                    whatsappButton.style.color = color;
-                    localStorage.setItem('buttonColor', color);
-                }
-                if (this.hasAttribute('data-bgcolor')) {
-                    const bgColor = this.getAttribute('data-bgcolor');
-                    whatsappButton.style.background = bgColor;
-                    localStorage.setItem('buttonBgColor', bgColor);
-                }
-                
-                // Actualizar selección visual
-                document.querySelectorAll('#whatsappSelector .color-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                this.classList.add('selected');
-            });
-        });
-        
-        // Botón de WhatsApp
-        whatsappButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            const message = 'Hola, quiero mi usuario gratis para Ases del Norte';
-            if (whatsappNumber) {
-                window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
-            } else {
-                alert('Por favor ingresa tu número de WhatsApp primero haciendo clic en "Guardar"');
-            }
-        });
-        
-        // Validación del número
-        phoneNumberInput.addEventListener('input', function() {
-            this.value = this.value.replace(/[^\d]/g, '');
         });
     </script>
 </body>
 </html>
 ```
+```
+
 
 
