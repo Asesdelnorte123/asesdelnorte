@@ -1,10 +1,10 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ases del Norte</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&family=Oswald:wght@500&family=Playfair+Display:wght@700&family=Anton&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,6 +16,8 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: #000;
         }
         
         .container {
@@ -37,15 +39,20 @@
             background-image: url('https://placehold.co/1920x1080/000000/FFFFFF?text=ASES+DEL+NORTE');
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.7;
             z-index: -1;
         }
         
         .content {
             text-align: center;
             padding: 30px;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 15px;
             margin: 30px;
+            max-width: 90%;
+            z-index: 10;
+            border: 2px solid #4ECDC4;
         }
         
         .title {
@@ -54,7 +61,6 @@
             margin-bottom: 15px;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
             font-weight: bold;
-            font-family: 'Roboto', sans-serif;
         }
         
         .subtitle {
@@ -62,12 +68,59 @@
             color: white;
             margin-bottom: 30px;
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
-            font-family: 'Roboto', sans-serif;
+        }
+        
+        .phone-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+            z-index: 10;
+        }
+        
+        .phone-label {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: block;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .phone-input {
+            display: flex;
+            gap: 10px;
+        }
+        
+        #phoneNumber {
+            flex-grow: 1;
+            padding: 12px;
+            border: 2px solid #4ECDC4;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        #phoneNumber::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        #setNumber {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            min-width: 70px;
         }
         
         .whatsapp-button {
-            display: inline-flex;
-            align-items: center;
+            display: inline-block;
             background: #25D366;
             color: white;
             padding: 15px 30px;
@@ -75,66 +128,52 @@
             text-decoration: none;
             font-size: 1.2rem;
             font-weight: bold;
-            margin: 10px;
+            margin: 20px 0;
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
             cursor: pointer;
-            font-family: 'Roboto', sans-serif;
+            z-index: 10;
+            border: none;
         }
         
-        .controls {
+        .upload-container {
             position: fixed;
             bottom: 20px;
             left: 20px;
             z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
         }
         
-        .control-button {
+        .upload-button {
             background: white;
             color: black;
             border: none;
-            padding: 10px 15px;
+            padding: 12px 18px;
             border-radius: 8px;
             cursor: pointer;
             font-size: 0.9rem;
-            min-width: 120px;
+            font-weight: bold;
         }
         
         .file-input {
             display: none;
         }
         
-        .font-selector, .color-selector {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 1000;
-            display: none;
-        }
-        
-        .selector-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #333;
-        }
-        
-        .font-option, .color-option {
-            display: block;
-            margin: 5px 0;
-            padding: 5px;
-            cursor: pointer;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        
-        .show {
-            display: block !important;
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .content {
+                margin: 20px;
+                padding: 20px;
+            }
+            
+            .phone-container {
+                width: 90%;
+            }
         }
     </style>
 </head>
@@ -143,41 +182,26 @@
         <div class="background-image" id="backgroundImage"></div>
         
         <div class="content">
-            <h1 class="title" id="title">ASES DEL NORTE</h1>
-            <p class="subtitle" id="subtitle">Pedime tu usuario gratis y comenza a divertirte a lo grande</p>
+            <h1 class="title">ASES DEL NORTE</h1>
+            <p class="subtitle">Pedime tu usuario gratis y comenza a divertirte a lo grande</p>
             
-            <a href="https://wa.me/1234567890?text=Hola,%20quiero%20mi%20usuario%20gratis" class="whatsapp-button" id="whatsappButton">
+            <!-- CAMPO PARA INGRESAR EL NÚMERO DE CELULAR -->
+            <div class="phone-container">
+                <label class="phone-label">📱 Tu número de WhatsApp:</label>
+                <div class="phone-input">
+                    <input type="tel" id="phoneNumber" placeholder="Ej: 543413123456">
+                    <button id="setNumber">Guardar</button>
+                </div>
+            </div>
+            
+            <a href="#" class="whatsapp-button" id="whatsappButton">
                 COMUNICATE CON ALICIA
             </a>
         </div>
         
-        <div class="controls">
-            <label for="imageUpload" class="control-button">📷 CAMBIAR IMAGEN</label>
+        <div class="upload-container">
+            <label for="imageUpload" class="upload-button">📷 CAMBIAR IMAGEN</label>
             <input type="file" id="imageUpload" class="file-input" accept="image/*">
-            
-            <button id="fontButton" class="control-button">🅰️ FUENTE</button>
-            <button id="colorButton" class="control-button">🎨 COLOR</button>
-        </div>
-        
-        <div class="font-selector" id="fontSelector">
-            <div class="selector-title">Selecciona Fuente:</div>
-            <div class="font-option" data-font="Roboto">Roboto</div>
-            <div class="font-option" data-font="Montserrat">Montserrat</div>
-            <div class="font-option" data-font="Oswald">Oswald</div>
-            <div class="font-option" data-font="Playfair Display">Playfair Display</div>
-            <div class="font-option" data-font="Anton">Anton</div>
-        </div>
-        
-        <div class="color-selector" id="colorSelector">
-            <div class="selector-title">Selecciona Color:</div>
-            <div class="color-option" data-color="#FFD700">Dorado</div>
-            <div class="color-option" data-color="#FF6B6B">Rosa</div>
-            <div class="color-option" data-color="#4ECDC4">Turquesa</div>
-            <div class="color-option" data-color="#45B7D1">Azul</div>
-            <div class="color-option" data-color="#96CEB4">Verde</div>
-            <div class="color-option" data-color="#DDA0DD">Morado</div>
-            <div class="color-option" data-color="#FFEAA7">Amarillo</div>
-            <div class="color-option" data-color="#FFFFFF">Blanco</div>
         </div>
     </div>
     
@@ -185,13 +209,12 @@
         // Elementos del DOM
         const backgroundImage = document.getElementById('backgroundImage');
         const imageUpload = document.getElementById('imageUpload');
-        const title = document.getElementById('title');
-        const subtitle = document.getElementById('subtitle');
         const whatsappButton = document.getElementById('whatsappButton');
-        const fontButton = document.getElementById('fontButton');
-        const colorButton = document.getElementById('colorButton');
-        const fontSelector = document.getElementById('fontSelector');
-        const colorSelector = document.getElementById('colorSelector');
+        const phoneNumberInput = document.getElementById('phoneNumber');
+        const setNumberButton = document.getElementById('setNumber');
+        
+        // Número de WhatsApp
+        let whatsappNumber = '';
         
         // Cargar datos desde localStorage
         window.addEventListener('load', function() {
@@ -201,18 +224,11 @@
                 backgroundImage.style.backgroundImage = `url(${savedImage})`;
             }
             
-            // Cargar fuente
-            const savedFont = localStorage.getItem('fontFamily');
-            if (savedFont) {
-                title.style.fontFamily = savedFont;
-                subtitle.style.fontFamily = savedFont;
-                whatsappButton.style.fontFamily = savedFont;
-            }
-            
-            // Cargar color
-            const savedColor = localStorage.getItem('textColor');
-            if (savedColor) {
-                title.style.color = savedColor;
+            // Cargar número de WhatsApp
+            const savedNumber = localStorage.getItem('whatsappNumber');
+            if (savedNumber) {
+                whatsappNumber = savedNumber;
+                phoneNumberInput.value = savedNumber;
             }
         });
         
@@ -223,60 +239,44 @@
                 reader.onload = function(event) {
                     const imageUrl = event.target.result;
                     backgroundImage.style.backgroundImage = `url(${imageUrl})`;
+                    backgroundImage.style.backgroundSize = 'cover';
+                    backgroundImage.style.backgroundPosition = 'center';
+                    backgroundImage.style.backgroundRepeat = 'no-repeat';
                     localStorage.setItem('backgroundImage', imageUrl);
                 }
                 reader.readAsDataURL(e.target.files[0]);
             }
         });
         
-        // Mostrar/Ocultar selector de fuentes
-        fontButton.addEventListener('click', function() {
-            fontSelector.classList.toggle('show');
-            colorSelector.classList.remove('show');
-        });
-        
-        // Mostrar/Ocultar selector de colores
-        colorButton.addEventListener('click', function() {
-            colorSelector.classList.toggle('show');
-            fontSelector.classList.remove('show');
-        });
-        
-        // Seleccionar fuente
-        document.querySelectorAll('.font-option').forEach(option => {
-            option.addEventListener('click', function() {
-                const font = this.getAttribute('data-font');
-                title.style.fontFamily = font;
-                subtitle.style.fontFamily = font;
-                whatsappButton.style.fontFamily = font;
-                localStorage.setItem('fontFamily', font);
-                fontSelector.classList.remove('show');
-            });
-        });
-        
-        // Seleccionar color
-        document.querySelectorAll('.color-option').forEach(option => {
-            option.addEventListener('click', function() {
-                const color = this.getAttribute('data-color');
-                title.style.color = color;
-                localStorage.setItem('textColor', color);
-                colorSelector.classList.remove('show');
-            });
-        });
-        
-        // Cerrar selectores al hacer clic fuera
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.controls') && !e.target.closest('.font-selector') && !e.target.closest('.color-selector')) {
-                fontSelector.classList.remove('show');
-                colorSelector.classList.remove('show');
+        // Guardar número de WhatsApp
+        setNumberButton.addEventListener('click', function() {
+            const inputNumber = phoneNumberInput.value.trim();
+            if (inputNumber && /^\d{8,15}$/.test(inputNumber)) {
+                whatsappNumber = inputNumber;
+                localStorage.setItem('whatsappNumber', whatsappNumber);
+                alert('¡Número guardado correctamente! Ahora puedes contactar por WhatsApp.');
+            } else {
+                alert('Por favor ingresa un número válido de 8-15 dígitos');
             }
         });
         
         // Botón de WhatsApp
-        whatsappButton.addEventListener('click', function() {
-            const phoneNumber = '1234567890';
+        whatsappButton.addEventListener('click', function(e) {
+            e.preventDefault();
             const message = 'Hola, quiero mi usuario gratis para Ases del Norte';
-            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            if (whatsappNumber) {
+                window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            } else {
+                alert('Por favor ingresa tu número de WhatsApp primero haciendo clic en "Guardar"');
+            }
+        });
+        
+        // Validación del número
+        phoneNumberInput.addEventListener('input', function() {
+            this.value = this.value.replace(/[^\d]/g, '');
         });
     </script>
 </body>
 </html>
+```
+
