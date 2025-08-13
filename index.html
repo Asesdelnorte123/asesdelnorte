@@ -65,6 +65,12 @@
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
             font-weight: bold;
             font-family: 'Roboto', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .title:hover {
+            transform: scale(1.02);
         }
         
         .subtitle {
@@ -73,6 +79,12 @@
             margin-bottom: 30px;
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
             font-family: 'Roboto', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .subtitle:hover {
+            transform: scale(1.02);
         }
         
         .phone-container {
@@ -139,6 +151,12 @@
             z-index: 10;
             font-family: 'Roboto', sans-serif;
             border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
         }
         
         .controls {
@@ -162,6 +180,12 @@
             font-weight: bold;
             min-width: 140px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .control-button:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
         }
         
         .file-input {
@@ -178,7 +202,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             z-index: 1000;
             display: none;
-            min-width: 250px;
+            min-width: 280px;
             max-height: 80vh;
             overflow-y: auto;
         }
@@ -205,6 +229,20 @@
         .option:hover {
             background: #f0f0f0;
             transform: translateX(5px);
+        }
+        
+        .size-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .size-input {
+            flex-grow: 1;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            width: 60px;
         }
         
         .show {
@@ -263,56 +301,157 @@
             <label for="imageUpload" class="control-button">📷 CAMBIAR IMAGEN</label>
             <input type="file" id="imageUpload" class="file-input" accept="image/*">
             
-            <button id="fontButton" class="control-button">🅰️ CAMBIAR FUENTE</button>
-            <button id="colorButton" class="control-button">🎨 CAMBIAR COLOR</button>
+            <button id="titleButton" class="control-button">✏️ EDITAR TÍTULO</button>
+            <button id="subtitleButton" class="control-button">✏️ EDITAR SUBTÍTULO</button>
+            <button id="whatsappButtonControl" class="control-button">✏️ EDITAR BOTÓN</button>
         </div>
         
-        <div class="selector" id="fontSelector">
-            <div class="selector-title">Selecciona Fuente:</div>
-            <div class="option" data-font="Roboto">Roboto</div>
-            <div class="option" data-font="Montserrat">Montserrat</div>
-            <div class="option" data-font="Oswald">Oswald</div>
-            <div class="option" data-font="Playfair Display">Playfair Display</div>
-            <div class="option" data-font="Anton">Anton</div>
-            <div class="option" data-font="PT Sans">PT Sans</div>
-            <div class="option" data-font="Lato">Lato</div>
-            <div class="option" data-font="Open Sans">Open Sans</div>
-            <div class="option" data-font="Slabo 27px">Slabo 27px</div>
-            <div class="option" data-font="Merriweather">Merriweather</div>
-            <div class="option" data-font="Raleway">Raleway</div>
-            <div class="option" data-font="Source Sans Pro">Source Sans Pro</div>
-            <div class="option" data-font="Ubuntu">Ubuntu</div>
-            <div class="option" data-font="Roboto Slab">Roboto Slab</div>
-            <div class="option" data-font="PT Serif">PT Serif</div>
-            <div class="option" data-font="Karla">Karla</div>
-            <div class="option" data-font="Work Sans">Work Sans</div>
-            <div class="option" data-font="Nunito">Nunito</div>
-            <div class="option" data-font="Barlow">Barlow</div>
-            <div class="option" data-font="Poppins">Poppins</div>
+        <div class="selector" id="titleSelector">
+            <div class="selector-title">Editar Título "ASES DEL NORTE"</div>
+            
+            <div style="margin: 10px 0;">
+                <label style="display: block; margin-bottom: 5px; color: #333;">Tamaño:</label>
+                <div class="size-option">
+                    <input type="range" id="titleSize" min="2" max="5" step="0.1" value="3">
+                    <span id="titleSizeValue">3rem</span>
+                </div>
+            </div>
+            
+            <div style="margin: 10px 0;">
+                <label style="display: block; margin-bottom: 5px; color: #333;">Fuente:</label>
+                <select id="titleFont" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
+                    <option value="Roboto">Roboto</option>
+                    <option value="Montserrat">Montserrat</option>
+                    <option value="Oswald">Oswald</option>
+                    <option value="Playfair Display">Playfair Display</option>
+                    <option value="Anton">Anton</option>
+                    <option value="PT Sans">PT Sans</option>
+                    <option value="Lato">Lato</option>
+                    <option value="Open Sans">Open Sans</option>
+                    <option value="Slabo 27px">Slabo 27px</option>
+                    <option value="Merriweather">Merriweather</option>
+                </select>
+            </div>
+            
+            <div style="margin: 10px 0;">
+                <label style="display: block; margin-bottom: 5px; color: #333;">Color:</label>
+                <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                    <div class="color-option" data-color="#FFD700" style="background: #FFD700; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#FF6B6B" style="background: #FF6B6B; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#4ECDC4" style="background: #4ECDC4; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#45B7D1" style="background: #45B7D1; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#96CEB4" style="background: #96CEB4; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#DDA0DD" style="background: #DDA0DD; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#FFEAA7" style="background: #FFEAA7; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#FFFFFF" style="background: #FFFFFF; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#000000" style="background: #000000; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#FF9800" style="background: #FF9800; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                </div>
+            </div>
         </div>
         
-        <div class="selector" id="colorSelector">
-            <div class="selector-title">Selecciona Color:</div>
-            <div class="option" data-color="#FFD700">Dorado</div>
-            <div class="option" data-color="#FF6B6B">Rosa</div>
-            <div class="option" data-color="#4ECDC4">Turquesa</div>
-            <div class="option" data-color="#45B7D1">Azul Claro</div>
-            <div class="option" data-color="#2196F3">Azul</div>
-            <div class="option" data-color="#96CEB4">Verde Claro</div>
-            <div class="option" data-color="#4CAF50">Verde</div>
-            <div class="option" data-color="#DDA0DD">Morado</div>
-            <div class="option" data-color="#9C27B0">Morado Oscuro</div>
-            <div class="option" data-color="#FFEAA7">Amarillo</div>
-            <div class="option" data-color="#FF9800">Naranja</div>
-            <div class="option" data-color="#F44336">Rojo</div>
-            <div class="option" data-color="#9E9E9E">Gris</div>
-            <div class="option" data-color="#FFFFFF">Blanco</div>
-            <div class="option" data-color="#000000">Negro</div>
-            <div class="option" data-color="#795548">Marrón</div>
-            <div class="option" data-color="#607D8B">Gris Azulado</div>
-            <div class="option" data-color="#3F51B5">Índigo</div>
-            <div class="option" data-color="#E91E63">Rosa Vivo</div>
-            <div class="option" data-color="#009688">Turquesa Oscuro</div>
+        <div class="selector" id="subtitleSelector">
+            <div class="selector-title">Editar Subtítulo</div>
+            
+            <div style="margin: 10px 0;">
+                <label style="display: block; margin-bottom: 5px; color: #333;">Tamaño:</label>
+                <div class="size-option">
+                    <input type="range" id="subtitleSize" min="1" max="3" step="0.1" value="1.5">
+                    <span id="subtitleSizeValue">1.5rem</span>
+                </div>
+            </div>
+            
+            <div style="margin: 10px 0;">
+                <label style="display: block; margin-bottom: 5px; color: #333;">Fuente:</label>
+                <select id="subtitleFont" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
+                    <option value="Roboto">Roboto</option>
+                    <option value="Montserrat">Montserrat</option>
+                    <option value="Oswald">Oswald</option>
+                    <option value="Playfair Display">Playfair Display</option>
+                    <option value="Anton">Anton</option>
+                    <option value="PT Sans">PT Sans</option>
+                    <option value="Lato">Lato</option>
+                    <option value="Open Sans">Open Sans</option>
+                    <option value="Slabo 27px">Slabo 27px</option>
+                    <option value="Merriweather">Merriweather</option>
+                </select>
+            </div>
+            
+            <div style="margin: 10px 0;">
+                <label style="display: block; margin-bottom: 5px; color: #333;">Color:</label>
+                <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                    <div class="color-option" data-color="#FFD700" style="background: #FFD700; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#FF6B6B" style="background: #FF6B6B; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#4ECDC4" style="background: #4ECDC4; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#45B7D1" style="background: #45B7D1; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#96CEB4" style="background: #96CEB4; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#DDA0DD" style="background: #DDA0DD; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#FFEAA7" style="background: #FFEAA7; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#FFFFFF" style="background: #FFFFFF; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#000000" style="background: #000000; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#FF9800" style="background: #FF9800; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="selector" id="whatsappSelector">
+            <div class="selector-title">Editar Botón WhatsApp</div>
+            
+            <div style="margin: 10px 0;">
+                <label style="display: block; margin-bottom: 5px; color: #333;">Tamaño:</label>
+                <div class="size-option">
+                    <input type="range" id="buttonSize" min="1" max="2" step="0.1" value="1.2">
+                    <span id="buttonSizeValue">1.2rem</span>
+                </div>
+            </div>
+            
+            <div style="margin: 10px 0;">
+                <label style="display: block; margin-bottom: 5px; color: #333;">Fuente:</label>
+                <select id="buttonFont" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
+                    <option value="Roboto">Roboto</option>
+                    <option value="Montserrat">Montserrat</option>
+                    <option value="Oswald">Oswald</option>
+                    <option value="Playfair Display">Playfair Display</option>
+                    <option value="Anton">Anton</option>
+                    <option value="PT Sans">PT Sans</option>
+                    <option value="Lato">Lato</option>
+                    <option value="Open Sans">Open Sans</option>
+                    <option value="Slabo 27px">Slabo 27px</option>
+                    <option value="Merriweather">Merriweather</option>
+                </select>
+            </div>
+            
+            <div style="margin: 10px 0;">
+                <label style="display: block; margin-bottom: 5px; color: #333;">Color del Texto:</label>
+                <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                    <div class="color-option" data-color="#FFFFFF" style="background: #FFFFFF; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#000000" style="background: #000000; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#FFD700" style="background: #FFD700; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#FF6B6B" style="background: #FF6B6B; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#4ECDC4" style="background: #4ECDC4; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#45B7D1" style="background: #45B7D1; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#96CEB4" style="background: #96CEB4; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#DDA0DD" style="background: #DDA0DD; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#FFEAA7" style="background: #FFEAA7; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-color="#FF9800" style="background: #FF9800; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                </div>
+            </div>
+            
+            <div style="margin: 10px 0;">
+                <label style="display: block; margin-bottom: 5px; color: #333;">Color de Fondo:</label>
+                <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                    <div class="color-option" data-bgcolor="#25D366" style="background: #25D366; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-bgcolor="#128C7E" style="background: #128C7E; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-bgcolor="#FF6B6B" style="background: #FF6B6B; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-bgcolor="#4ECDC4" style="background: #4ECDC4; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-bgcolor="#45B7D1" style="background: #45B7D1; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-bgcolor="#96CEB4" style="background: #96CEB4; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-bgcolor="#DDA0DD" style="background: #DDA0DD; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-bgcolor="#FF9800" style="background: #FF9800; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-bgcolor="#000000" style="background: #000000; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;"></div>
+                    <div class="color-option" data-bgcolor="#FFFFFF" style="background: #FFFFFF; width: 25px; height: 25px; border-radius: 50%; cursor: pointer; border: 1px solid #ddd;"></div>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -325,10 +464,15 @@
         const whatsappButton = document.getElementById('whatsappButton');
         const phoneNumberInput = document.getElementById('phoneNumber');
         const setNumberButton = document.getElementById('setNumber');
-        const fontButton = document.getElementById('fontButton');
-        const colorButton = document.getElementById('colorButton');
-        const fontSelector = document.getElementById('fontSelector');
-        const colorSelector = document.getElementById('colorSelector');
+        
+        // Selectores
+        const titleButton = document.getElementById('titleButton');
+        const subtitleButton = document.getElementById('subtitleButton');
+        const whatsappButtonControl = document.getElementById('whatsappButtonControl');
+        
+        const titleSelector = document.getElementById('titleSelector');
+        const subtitleSelector = document.getElementById('subtitleSelector');
+        const whatsappSelector = document.getElementById('whatsappSelector');
         
         // Número de WhatsApp
         let whatsappNumber = '';
@@ -348,18 +492,66 @@
                 phoneNumberInput.value = savedNumber;
             }
             
-            // Cargar fuente
-            const savedFont = localStorage.getItem('fontFamily');
-            if (savedFont) {
-                title.style.fontFamily = savedFont;
-                subtitle.style.fontFamily = savedFont;
-                whatsappButton.style.fontFamily = savedFont;
+            // Cargar configuración del título
+            const savedTitleSize = localStorage.getItem('titleSize');
+            if (savedTitleSize) {
+                title.style.fontSize = savedTitleSize;
+                document.getElementById('titleSize').value = parseFloat(savedTitleSize);
+                document.getElementById('titleSizeValue').textContent = savedTitleSize;
             }
             
-            // Cargar color
-            const savedColor = localStorage.getItem('textColor');
-            if (savedColor) {
-                title.style.color = savedColor;
+            const savedTitleFont = localStorage.getItem('titleFont');
+            if (savedTitleFont) {
+                title.style.fontFamily = savedTitleFont;
+                document.getElementById('titleFont').value = savedTitleFont;
+            }
+            
+            const savedTitleColor = localStorage.getItem('titleColor');
+            if (savedTitleColor) {
+                title.style.color = savedTitleColor;
+            }
+            
+            // Cargar configuración del subtítulo
+            const savedSubtitleSize = localStorage.getItem('subtitleSize');
+            if (savedSubtitleSize) {
+                subtitle.style.fontSize = savedSubtitleSize;
+                document.getElementById('subtitleSize').value = parseFloat(savedSubtitleSize);
+                document.getElementById('subtitleSizeValue').textContent = savedSubtitleSize;
+            }
+            
+            const savedSubtitleFont = localStorage.getItem('subtitleFont');
+            if (savedSubtitleFont) {
+                subtitle.style.fontFamily = savedSubtitleFont;
+                document.getElementById('subtitleFont').value = savedSubtitleFont;
+            }
+            
+            const savedSubtitleColor = localStorage.getItem('subtitleColor');
+            if (savedSubtitleColor) {
+                subtitle.style.color = savedSubtitleColor;
+            }
+            
+            // Cargar configuración del botón
+            const savedButtonSize = localStorage.getItem('buttonSize');
+            if (savedButtonSize) {
+                whatsappButton.style.fontSize = savedButtonSize;
+                document.getElementById('buttonSize').value = parseFloat(savedButtonSize);
+                document.getElementById('buttonSizeValue').textContent = savedButtonSize;
+            }
+            
+            const savedButtonFont = localStorage.getItem('buttonFont');
+            if (savedButtonFont) {
+                whatsappButton.style.fontFamily = savedButtonFont;
+                document.getElementById('buttonFont').value = savedButtonFont;
+            }
+            
+            const savedButtonColor = localStorage.getItem('buttonColor');
+            if (savedButtonColor) {
+                whatsappButton.style.color = savedButtonColor;
+            }
+            
+            const savedButtonBgColor = localStorage.getItem('buttonBgColor');
+            if (savedButtonBgColor) {
+                whatsappButton.style.background = savedButtonBgColor;
             }
         });
         
@@ -396,46 +588,102 @@
             }
         });
         
-        // Mostrar/Ocultar selector de fuentes
-        fontButton.addEventListener('click', function() {
-            fontSelector.classList.toggle('show');
-            colorSelector.classList.remove('show');
+        // Mostrar selectores
+        titleButton.addEventListener('click', function() {
+            titleSelector.classList.toggle('show');
+            subtitleSelector.classList.remove('show');
+            whatsappSelector.classList.remove('show');
         });
         
-        // Mostrar/Ocultar selector de colores
-        colorButton.addEventListener('click', function() {
-            colorSelector.classList.toggle('show');
-            fontSelector.classList.remove('show');
+        subtitleButton.addEventListener('click', function() {
+            subtitleSelector.classList.toggle('show');
+            titleSelector.classList.remove('show');
+            whatsappSelector.classList.remove('show');
         });
         
-        // Seleccionar fuente
-        document.querySelectorAll('#fontSelector .option').forEach(option => {
-            option.addEventListener('click', function() {
-                const font = this.getAttribute('data-font');
-                title.style.fontFamily = font;
-                subtitle.style.fontFamily = font;
-                whatsappButton.style.fontFamily = font;
-                localStorage.setItem('fontFamily', font);
-                fontSelector.classList.remove('show');
-            });
-        });
-        
-        // Seleccionar color
-        document.querySelectorAll('#colorSelector .option').forEach(option => {
-            option.addEventListener('click', function() {
-                const color = this.getAttribute('data-color');
-                title.style.color = color;
-                localStorage.setItem('textColor', color);
-                colorSelector.classList.remove('show');
-            });
+        whatsappButtonControl.addEventListener('click', function() {
+            whatsappSelector.classList.toggle('show');
+            titleSelector.classList.remove('show');
+            subtitleSelector.classList.remove('show');
         });
         
         // Cerrar selectores al hacer clic fuera
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.controls') && !e.target.closest('.selector')) {
-                fontSelector.classList.remove('show');
-                colorSelector.classList.remove('show');
+                titleSelector.classList.remove('show');
+                subtitleSelector.classList.remove('show');
+                whatsappSelector.classList.remove('show');
             }
+        });
+        
+        // Funcionalidad para el selector de título
+        document.getElementById('titleSize').addEventListener('input', function() {
+            const size = this.value + 'rem';
+            title.style.fontSize = size;
+            document.getElementById('titleSizeValue').textContent = size;
+            localStorage.setItem('titleSize', size);
+        });
+        
+        document.getElementById('titleFont').addEventListener('change', function() {
+            title.style.fontFamily = this.value;
+            localStorage.setItem('titleFont', this.value);
+        });
+        
+        document.querySelectorAll('#titleSelector .color-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const color = this.getAttribute('data-color');
+                title.style.color = color;
+                localStorage.setItem('titleColor', color);
+            });
+        });
+        
+        // Funcionalidad para el selector de subtítulo
+        document.getElementById('subtitleSize').addEventListener('input', function() {
+            const size = this.value + 'rem';
+            subtitle.style.fontSize = size;
+            document.getElementById('subtitleSizeValue').textContent = size;
+            localStorage.setItem('subtitleSize', size);
+        });
+        
+        document.getElementById('subtitleFont').addEventListener('change', function() {
+            subtitle.style.fontFamily = this.value;
+            localStorage.setItem('subtitleFont', this.value);
+        });
+        
+        document.querySelectorAll('#subtitleSelector .color-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const color = this.getAttribute('data-color');
+                subtitle.style.color = color;
+                localStorage.setItem('subtitleColor', color);
+            });
+        });
+        
+        // Funcionalidad para el selector de botón
+        document.getElementById('buttonSize').addEventListener('input', function() {
+            const size = this.value + 'rem';
+            whatsappButton.style.fontSize = size;
+            document.getElementById('buttonSizeValue').textContent = size;
+            localStorage.setItem('buttonSize', size);
+        });
+        
+        document.getElementById('buttonFont').addEventListener('change', function() {
+            whatsappButton.style.fontFamily = this.value;
+            localStorage.setItem('buttonFont', this.value);
+        });
+        
+        document.querySelectorAll('#whatsappSelector .color-option').forEach(option => {
+            option.addEventListener('click', function() {
+                if (this.hasAttribute('data-color')) {
+                    const color = this.getAttribute('data-color');
+                    whatsappButton.style.color = color;
+                    localStorage.setItem('buttonColor', color);
+                }
+                if (this.hasAttribute('data-bgcolor')) {
+                    const bgColor = this.getAttribute('data-bgcolor');
+                    whatsappButton.style.background = bgColor;
+                    localStorage.setItem('buttonBgColor', bgColor);
+                }
+            });
         });
         
         // Botón de WhatsApp
@@ -456,4 +704,6 @@
     </script>
 </body>
 </html>
+</html>
 ```
+
