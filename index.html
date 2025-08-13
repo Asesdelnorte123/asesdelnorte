@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ases del Norte</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&family=Oswald:wght@500&family=Playfair+Display:wght@700&family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&family=Oswald:wght@500&family=Playfair+Display:wght@700&family=Anton&family=PT+Sans&family=Lato&family=Open+Sans&family=Slabo+27px&family=Merriweather&family=Raleway&family=Source+Sans+Pro&family=Ubuntu&family=Roboto+Slab&family=PT+Serif&family=Karla&family=Work+Sans&family=Nunito&family=Barlow&family=Poppins&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -43,6 +43,7 @@
             background-repeat: no-repeat;
             opacity: 0.7;
             z-index: -1;
+            transition: opacity 0.5s ease;
         }
         
         .content {
@@ -54,6 +55,7 @@
             max-width: 90%;
             z-index: 10;
             border: 2px solid #4ECDC4;
+            backdrop-filter: blur(10px);
         }
         
         .title {
@@ -159,13 +161,14 @@
             font-size: 0.9rem;
             font-weight: bold;
             min-width: 140px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         
         .file-input {
             display: none;
         }
         
-        .font-selector, .color-selector {
+        .selector {
             position: fixed;
             top: 20px;
             right: 20px;
@@ -175,26 +178,33 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             z-index: 1000;
             display: none;
-            min-width: 200px;
+            min-width: 250px;
+            max-height: 80vh;
+            overflow-y: auto;
         }
         
         .selector-title {
             font-weight: bold;
             margin-bottom: 10px;
             color: #333;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
         }
         
-        .font-option, .color-option {
+        .option {
             display: block;
             margin: 5px 0;
             padding: 8px;
             cursor: pointer;
             border: 1px solid #ddd;
             border-radius: 5px;
+            transition: all 0.2s ease;
         }
         
-        .font-option:hover, .color-option:hover {
+        .option:hover {
             background: #f0f0f0;
+            transform: translateX(5px);
         }
         
         .show {
@@ -217,6 +227,12 @@
             
             .phone-container {
                 width: 90%;
+            }
+            
+            .selector {
+                right: 10px;
+                left: 10px;
+                max-width: calc(100% - 20px);
             }
         }
     </style>
@@ -251,25 +267,52 @@
             <button id="colorButton" class="control-button">🎨 CAMBIAR COLOR</button>
         </div>
         
-        <div class="font-selector" id="fontSelector">
+        <div class="selector" id="fontSelector">
             <div class="selector-title">Selecciona Fuente:</div>
-            <div class="font-option" data-font="Roboto">Roboto</div>
-            <div class="font-option" data-font="Montserrat">Montserrat</div>
-            <div class="font-option" data-font="Oswald">Oswald</div>
-            <div class="font-option" data-font="Playfair Display">Playfair Display</div>
-            <div class="font-option" data-font="Anton">Anton</div>
+            <div class="option" data-font="Roboto">Roboto</div>
+            <div class="option" data-font="Montserrat">Montserrat</div>
+            <div class="option" data-font="Oswald">Oswald</div>
+            <div class="option" data-font="Playfair Display">Playfair Display</div>
+            <div class="option" data-font="Anton">Anton</div>
+            <div class="option" data-font="PT Sans">PT Sans</div>
+            <div class="option" data-font="Lato">Lato</div>
+            <div class="option" data-font="Open Sans">Open Sans</div>
+            <div class="option" data-font="Slabo 27px">Slabo 27px</div>
+            <div class="option" data-font="Merriweather">Merriweather</div>
+            <div class="option" data-font="Raleway">Raleway</div>
+            <div class="option" data-font="Source Sans Pro">Source Sans Pro</div>
+            <div class="option" data-font="Ubuntu">Ubuntu</div>
+            <div class="option" data-font="Roboto Slab">Roboto Slab</div>
+            <div class="option" data-font="PT Serif">PT Serif</div>
+            <div class="option" data-font="Karla">Karla</div>
+            <div class="option" data-font="Work Sans">Work Sans</div>
+            <div class="option" data-font="Nunito">Nunito</div>
+            <div class="option" data-font="Barlow">Barlow</div>
+            <div class="option" data-font="Poppins">Poppins</div>
         </div>
         
-        <div class="color-selector" id="colorSelector">
+        <div class="selector" id="colorSelector">
             <div class="selector-title">Selecciona Color:</div>
-            <div class="color-option" data-color="#FFD700">Dorado</div>
-            <div class="color-option" data-color="#FF6B6B">Rosa</div>
-            <div class="color-option" data-color="#4ECDC4">Turquesa</div>
-            <div class="color-option" data-color="#45B7D1">Azul</div>
-            <div class="color-option" data-color="#96CEB4">Verde</div>
-            <div class="color-option" data-color="#DDA0DD">Morado</div>
-            <div class="color-option" data-color="#FFEAA7">Amarillo</div>
-            <div class="color-option" data-color="#FFFFFF">Blanco</div>
+            <div class="option" data-color="#FFD700">Dorado</div>
+            <div class="option" data-color="#FF6B6B">Rosa</div>
+            <div class="option" data-color="#4ECDC4">Turquesa</div>
+            <div class="option" data-color="#45B7D1">Azul Claro</div>
+            <div class="option" data-color="#2196F3">Azul</div>
+            <div class="option" data-color="#96CEB4">Verde Claro</div>
+            <div class="option" data-color="#4CAF50">Verde</div>
+            <div class="option" data-color="#DDA0DD">Morado</div>
+            <div class="option" data-color="#9C27B0">Morado Oscuro</div>
+            <div class="option" data-color="#FFEAA7">Amarillo</div>
+            <div class="option" data-color="#FF9800">Naranja</div>
+            <div class="option" data-color="#F44336">Rojo</div>
+            <div class="option" data-color="#9E9E9E">Gris</div>
+            <div class="option" data-color="#FFFFFF">Blanco</div>
+            <div class="option" data-color="#000000">Negro</div>
+            <div class="option" data-color="#795548">Marrón</div>
+            <div class="option" data-color="#607D8B">Gris Azulado</div>
+            <div class="option" data-color="#3F51B5">Índigo</div>
+            <div class="option" data-color="#E91E63">Rosa Vivo</div>
+            <div class="option" data-color="#009688">Turquesa Oscuro</div>
         </div>
     </div>
     
@@ -326,11 +369,16 @@
                 const reader = new FileReader();
                 reader.onload = function(event) {
                     const imageUrl = event.target.result;
-                    backgroundImage.style.backgroundImage = `url(${imageUrl})`;
-                    backgroundImage.style.backgroundSize = 'cover';
-                    backgroundImage.style.backgroundPosition = 'center';
-                    backgroundImage.style.backgroundRepeat = 'no-repeat';
-                    localStorage.setItem('backgroundImage', imageUrl);
+                    // Mostrar transición
+                    backgroundImage.style.opacity = '0.3';
+                    setTimeout(() => {
+                        backgroundImage.style.backgroundImage = `url(${imageUrl})`;
+                        backgroundImage.style.backgroundSize = 'cover';
+                        backgroundImage.style.backgroundPosition = 'center';
+                        backgroundImage.style.backgroundRepeat = 'no-repeat';
+                        backgroundImage.style.opacity = '0.7';
+                        localStorage.setItem('backgroundImage', imageUrl);
+                    }, 150);
                 }
                 reader.readAsDataURL(e.target.files[0]);
             }
@@ -361,7 +409,7 @@
         });
         
         // Seleccionar fuente
-        document.querySelectorAll('.font-option').forEach(option => {
+        document.querySelectorAll('#fontSelector .option').forEach(option => {
             option.addEventListener('click', function() {
                 const font = this.getAttribute('data-font');
                 title.style.fontFamily = font;
@@ -373,7 +421,7 @@
         });
         
         // Seleccionar color
-        document.querySelectorAll('.color-option').forEach(option => {
+        document.querySelectorAll('#colorSelector .option').forEach(option => {
             option.addEventListener('click', function() {
                 const color = this.getAttribute('data-color');
                 title.style.color = color;
@@ -384,7 +432,7 @@
         
         // Cerrar selectores al hacer clic fuera
         document.addEventListener('click', function(e) {
-            if (!e.target.closest('.controls') && !e.target.closest('.font-selector') && !e.target.closest('.color-selector')) {
+            if (!e.target.closest('.controls') && !e.target.closest('.selector')) {
                 fontSelector.classList.remove('show');
                 colorSelector.classList.remove('show');
             }
@@ -409,5 +457,3 @@
 </body>
 </html>
 ```
-
-
